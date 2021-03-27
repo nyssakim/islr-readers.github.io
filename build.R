@@ -1,0 +1,3 @@
+#!/usr/bin/env Rscript
+
+rmarkdown::render_site(encoding = "UTF-8")
