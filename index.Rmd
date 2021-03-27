@@ -1,0 +1,14 @@
+--- 
+title: "ISLR Notes"
+author: "TBD"
+date: "2021"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+link-citations: yes
+---
+
+# About {-#about}
+
+Notes and solutions for the exercises in the book: *An Introduction to Statistical Learning with Applications in R (1st edition)* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani (website:  https://www.statlearning.com/)

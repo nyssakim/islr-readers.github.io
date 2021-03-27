@@ -1,0 +1,11 @@
+intro
+statistical-learning
+linear-regression
+classification
+classification-1
+resampling-methods
+model-selection-and-regularization
+moving-beyond-linearity
+tree-based-methods
+support-vector-machines
+unsupervised-learning
