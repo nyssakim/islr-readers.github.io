@@ -1,4 +1,4 @@
-# ILSR Reading Notes
+# ISLR Reading Notes
 
 ## Introduction to Statistical Learning with R
 
