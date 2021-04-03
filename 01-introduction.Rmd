@@ -1,1 +1,22 @@
 # Introduction {#intro}
+
+## An Overview of Statistical Learning  
+
+> "Statistical learning refers to a vast set of tools for understanding data."
+
++  Supervised: Using statistical models  to **predict** or **estimate** __outputs__ based on __inputs__.
++  Unsupervised: Same as above but without outputs. 
+
+### Datasets Examples
+
++  Wages 
++  Stock Market Data 
++  Gene Expression Data 
+
+## A Brief History of Statistical Learning 
+
+Etc, etc old white guys.
+
+## Other Considerations
+
+["How Eugenics Shaped Statistics: Exposing the damned lies of three science pioneers.](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
