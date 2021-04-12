@@ -1,2 +1,56 @@
 # Statistical Learning
 
+## 2.1 What Is Statistical Learning?
+
+## 2.1.1 Why Estimate f?
+
+## 2.1.2 How Do We Estimate f?
+
+## 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
+
+## 2.1.4 Supervised Versus Unsupervised Learning
+
+## 2.1.5 Regression Versus Classification Problems
+
+## 2.2 Assessing Model Accuracy
+
+## 2.2.1 Measuring the Quality of Fit
+
+## 2.2.2 The Bias-Variance Trade-Off
+
+## 2.2.3 The Classification Setting
+
+## 2.3 Lab: Introduction to R
+
+## 2.3.1 Basic Commands
+
+```{r}
+ x <- c(1,3,2,5)
+x
+```
+
+## 2.3.2 Graphics
+
+## 2.3.3 Indexing Data
+
+## 2.3.4 Loading Data
+
+## 2.3.5 Additional Graphical and Numerical Summaries
+
+## 2.4 Exercises
+
+## Conceptual
+
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+
+## Applied
+
+8.
+9.
+10.
