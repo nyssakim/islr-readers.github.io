@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | ISLR Notes</title>
   <meta name="description" content="Chapter 1 Introduction | ISLR Notes" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | ISLR Notes" />
   <meta property="og:type" content="book" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="statistical-learning.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +53,69 @@
 
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 </head>
 
@@ -69,14 +133,41 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#an-overview-of-statistical-learning"><i class="fa fa-check"></i><b>1.1</b> An Overview of Statistical Learning</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#datasets-examples"><i class="fa fa-check"></i><b>1.1.1</b> Datasets Examples</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#an-overview-of-statistical-learning"><i class="fa fa-check"></i><b>1.1</b> An Overview of Statistical Learning</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-sets"><i class="fa fa-check"></i><b>1.2</b> Data sets</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#wages"><i class="fa fa-check"></i><b>1.2.1</b> Wages</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#stock-market-data"><i class="fa fa-check"></i><b>1.2.2</b> Stock Market Data</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#gene-expression-data"><i class="fa fa-check"></i><b>1.2.3</b> Gene Expression Data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#a-brief-history-of-statistical-learning"><i class="fa fa-check"></i><b>1.2</b> A Brief History of Statistical Learning</a></li>
-<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#other-considerations"><i class="fa fa-check"></i><b>1.3</b> Other Considerations</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#history"><i class="fa fa-check"></i><b>1.3</b> History</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#other-considerations"><i class="fa fa-check"></i><b>1.4</b> Other Considerations</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#matrix-notation"><i class="fa fa-check"></i><b>1.5</b> Matrix Notation</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-learning.html"><a href="statistical-learning.html"><i class="fa fa-check"></i><b>2</b> Statistical Learning</a></li>
+<li class="chapter" data-level="2" data-path="statistical-learning.html"><a href="statistical-learning.html"><i class="fa fa-check"></i><b>2</b> Statistical Learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-learning.html"><a href="statistical-learning.html#what-is-statistical-learning"><i class="fa fa-check"></i><b>2.1</b> 2.1 What Is Statistical Learning?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-learning.html"><a href="statistical-learning.html#why-estimate-f"><i class="fa fa-check"></i><b>2.2</b> 2.1.1 Why Estimate f?</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-learning.html"><a href="statistical-learning.html#how-do-we-estimate-f"><i class="fa fa-check"></i><b>2.3</b> 2.1.2 How Do We Estimate f?</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-learning.html"><a href="statistical-learning.html#the-trade-off-between-prediction-accuracy-and-model-interpretability"><i class="fa fa-check"></i><b>2.4</b> 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-learning.html"><a href="statistical-learning.html#supervised-versus-unsupervised-learning"><i class="fa fa-check"></i><b>2.5</b> 2.1.4 Supervised Versus Unsupervised Learning</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-learning.html"><a href="statistical-learning.html#regression-versus-classification-problems"><i class="fa fa-check"></i><b>2.6</b> 2.1.5 Regression Versus Classification Problems</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-learning.html"><a href="statistical-learning.html#assessing-model-accuracy"><i class="fa fa-check"></i><b>2.7</b> 2.2 Assessing Model Accuracy</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-learning.html"><a href="statistical-learning.html#measuring-the-quality-of-fit"><i class="fa fa-check"></i><b>2.8</b> 2.2.1 Measuring the Quality of Fit</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-learning.html"><a href="statistical-learning.html#the-bias-variance-trade-off"><i class="fa fa-check"></i><b>2.9</b> 2.2.2 The Bias-Variance Trade-Off</a></li>
+<li class="chapter" data-level="2.10" data-path="statistical-learning.html"><a href="statistical-learning.html#the-classification-setting"><i class="fa fa-check"></i><b>2.10</b> 2.2.3 The Classification Setting</a></li>
+<li class="chapter" data-level="2.11" data-path="statistical-learning.html"><a href="statistical-learning.html#lab-introduction-to-r"><i class="fa fa-check"></i><b>2.11</b> 2.3 Lab: Introduction to R</a></li>
+<li class="chapter" data-level="2.12" data-path="statistical-learning.html"><a href="statistical-learning.html#basic-commands"><i class="fa fa-check"></i><b>2.12</b> 2.3.1 Basic Commands</a></li>
+<li class="chapter" data-level="2.13" data-path="statistical-learning.html"><a href="statistical-learning.html#graphics"><i class="fa fa-check"></i><b>2.13</b> 2.3.2 Graphics</a></li>
+<li class="chapter" data-level="2.14" data-path="statistical-learning.html"><a href="statistical-learning.html#indexing-data"><i class="fa fa-check"></i><b>2.14</b> 2.3.3 Indexing Data</a></li>
+<li class="chapter" data-level="2.15" data-path="statistical-learning.html"><a href="statistical-learning.html#loading-data"><i class="fa fa-check"></i><b>2.15</b> 2.3.4 Loading Data</a></li>
+<li class="chapter" data-level="2.16" data-path="statistical-learning.html"><a href="statistical-learning.html#additional-graphical-and-numerical-summaries"><i class="fa fa-check"></i><b>2.16</b> 2.3.5 Additional Graphical and Numerical Summaries</a></li>
+<li class="chapter" data-level="2.17" data-path="statistical-learning.html"><a href="statistical-learning.html#exercises"><i class="fa fa-check"></i><b>2.17</b> 2.4 Exercises</a></li>
+<li class="chapter" data-level="2.18" data-path="statistical-learning.html"><a href="statistical-learning.html#conceptual"><i class="fa fa-check"></i><b>2.18</b> Conceptual</a></li>
+<li class="chapter" data-level="2.19" data-path="statistical-learning.html"><a href="statistical-learning.html#applied"><i class="fa fa-check"></i><b>2.19</b> Applied</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>3</b> Linear Regression</a></li>
 <li class="chapter" data-level="4" data-path="classification.html"><a href="classification.html"><i class="fa fa-check"></i><b>4</b> Classification</a></li>
 <li class="chapter" data-level="5" data-path="resampling-methods.html"><a href="resampling-methods.html"><i class="fa fa-check"></i><b>5</b> Resampling Methods</a></li>
@@ -105,33 +196,159 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1">
+<div id="intro" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<div id="an-overview-of-statistical-learning" class="section level2">
+<div id="an-overview-of-statistical-learning" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> An Overview of Statistical Learning</h2>
 <blockquote>
 <p>“Statistical learning refers to a vast set of tools for understanding data.”</p>
 </blockquote>
 <ul>
 <li>Supervised: Using statistical models to <strong>predict</strong> or <strong>estimate</strong> <strong>outputs</strong> based on <strong>inputs</strong>.</li>
-<li>Unsupervised: Same as above but without outputs.</li>
+<li>Unsupervised: Finding relationships between variables and structure in the data</li>
 </ul>
-<div id="datasets-examples" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Datasets Examples</h3>
+</div>
+<div id="data-sets" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data sets</h2>
+<p>Example data used in the book</p>
 <ul>
 <li>Wages</li>
 <li>Stock Market Data</li>
 <li>Gene Expression Data</li>
 </ul>
+<div id="wages" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Wages</h3>
+<p>Used for regression problem examples such as predicting wage based on age and education</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Wage)</span></code></pre></div>
+<pre><code>## Rows: 3,000
+## Columns: 11
+## $ year       &lt;int&gt; 2006, 2004, 2003, 2003, 2005, 2008, 2009, 2008, 2006, 2004…
+## $ age        &lt;int&gt; 18, 24, 45, 43, 50, 54, 44, 30, 41, 52, 45, 34, 35, 39, 54…
+## $ maritl     &lt;fct&gt; 1. Never Married, 1. Never Married, 2. Married, 2. Married…
+## $ race       &lt;fct&gt; 1. White, 1. White, 1. White, 3. Asian, 1. White, 1. White…
+## $ education  &lt;fct&gt; 1. &lt; HS Grad, 4. College Grad, 3. Some College, 4. College…
+## $ region     &lt;fct&gt; 2. Middle Atlantic, 2. Middle Atlantic, 2. Middle Atlantic…
+## $ jobclass   &lt;fct&gt; 1. Industrial, 2. Information, 1. Industrial, 2. Informati…
+## $ health     &lt;fct&gt; 1. &lt;=Good, 2. &gt;=Very Good, 1. &lt;=Good, 2. &gt;=Very Good, 1. &lt;…
+## $ health_ins &lt;fct&gt; 2. No, 2. No, 1. Yes, 1. Yes, 1. Yes, 1. Yes, 1. Yes, 1. Y…
+## $ logwage    &lt;dbl&gt; 4.318063, 4.255273, 4.875061, 5.041393, 4.318063, 4.845098…
+## $ wage       &lt;dbl&gt; 75.04315, 70.47602, 130.98218, 154.68529, 75.04315, 127.11…</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="islr_notes_files/figure-html/unnamed-chunk-3-2.png" width="672" /><img src="islr_notes_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+</div>
+<div id="stock-market-data" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Stock Market Data</h3>
+<p>Used for classification problem examples with categorical or qualitative output, such as predicting whether a stock index will either increase or decrease on any given day.</p>
+<p>Daily percentage change of S&amp;P 500 stock index and 5 prior days</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Smarket)</span></code></pre></div>
+<pre><code>## Rows: 1,250
+## Columns: 9
+## $ Year      &lt;dbl&gt; 2001, 2001, 2001, 2001, 2001, 2001, 2001, 2001, 2001, 2001,…
+## $ Lag1      &lt;dbl&gt; 0.381, 0.959, 1.032, -0.623, 0.614, 0.213, 1.392, -0.403, 0…
+## $ Lag2      &lt;dbl&gt; -0.192, 0.381, 0.959, 1.032, -0.623, 0.614, 0.213, 1.392, -…
+## $ Lag3      &lt;dbl&gt; -2.624, -0.192, 0.381, 0.959, 1.032, -0.623, 0.614, 0.213, …
+## $ Lag4      &lt;dbl&gt; -1.055, -2.624, -0.192, 0.381, 0.959, 1.032, -0.623, 0.614,…
+## $ Lag5      &lt;dbl&gt; 5.010, -1.055, -2.624, -0.192, 0.381, 0.959, 1.032, -0.623,…
+## $ Volume    &lt;dbl&gt; 1.1913, 1.2965, 1.4112, 1.2760, 1.2057, 1.3491, 1.4450, 1.4…
+## $ Today     &lt;dbl&gt; 0.959, 1.032, -0.623, 0.614, 0.213, 1.392, -0.403, 0.027, 1…
+## $ Direction &lt;fct&gt; Up, Up, Down, Up, Up, Up, Down, Up, Up, Up, Down, Down, Up,…</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="gene-expression-data" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Gene Expression Data</h3>
+<p>Used for examples of clustering problems such as identifying related groups of
+cancer cells based on observed characteristics.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(NCI60)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ data: num [1:64, 1:6830] 0.3 0.68 0.94 0.28 0.485 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:64] &quot;V1&quot; &quot;V2&quot; &quot;V3&quot; &quot;V4&quot; ...
+##   .. ..$ : chr [1:6830] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ labs: chr [1:64] &quot;CNS&quot; &quot;CNS&quot; &quot;CNS&quot; &quot;RENAL&quot; ...</code></pre>
 </div>
 </div>
-<div id="a-brief-history-of-statistical-learning" class="section level2">
-<h2><span class="header-section-number">1.2</span> A Brief History of Statistical Learning</h2>
-<p>Etc, etc old white guys.</p>
+<div id="history" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> History</h2>
+<p>A brief timeline for the development of statistical learning</p>
+<ul>
+<li>1800’s <em>Linear Regression</em> (<em>Method of Least Squares</em>)</li>
+<li>1936 <em>Linear Discriminant Analysis</em> developed to predict qualitative values</li>
+<li>1940s <em>Logistic Regression</em> developed to predict qualitative values</li>
+<li>1970s <em>Generalized Linear Models</em> including both logistic and linear regression</li>
+<li>1980s <em>Classification and Regression Trees</em></li>
+<li>1986 <em>Generalized Additive Models</em></li>
+<li>Present day (2001) <em>Machine Learning</em></li>
+</ul>
 </div>
-<div id="other-considerations" class="section level2">
-<h2><span class="header-section-number">1.3</span> Other Considerations</h2>
+<div id="other-considerations" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Other Considerations</h2>
 <p><a href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">"How Eugenics Shaped Statistics: Exposing the damned lies of three science pioneers.</a></p>
+</div>
+<div id="matrix-notation" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Matrix Notation</h2>
+<p>Conventions used in the book</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> number of observations in a sample</p></li>
+<li><p><span class="math inline">\(p\)</span> number of variables</p></li>
+<li><p><span class="math inline">\(\textbf{X}\)</span> an <span class="math inline">\(n \times p\)</span> matrix</p>
+<ul>
+<li>where <span class="math inline">\(x_{ij}\)</span> represents the element in the <span class="math inline">\(i\)</span>th row and the <span class="math inline">\(j\)</span>th column.</li>
+<li><span class="math inline">\(x_i\)</span> represents a single observation (row) as a vector with length <span class="math inline">\(p\)</span>. Note that vectors are written vertically by convention in math notation.</li>
+<li><span class="math inline">\(\textbf{x}_j\)</span> represents a single variable (column) as a vector with length <span class="math inline">\(n\)</span>. Note that the bold face font is used to distinguish columns (<span class="math inline">\(\textbf{x}_3\)</span>) from rows (<span class="math inline">\(x_3\)</span>).</li>
+</ul></li>
+<li><p>The <span class="math inline">\(^T\)</span> superscript operator denotes the transpose of a matrix or vector, where row and column indices are reversed such that the resulting matrix or vector will have <span class="math inline">\(p\)</span> rows and/or <span class="math inline">\(n\)</span> columns.</p></li>
+</ul>
+<p>Examples</p>
+<ul>
+<li><p>A matrix of elements
+<span class="math display">\[
+\textbf{X} =  \left(
+\begin{matrix} 
+x_{11} &amp; x_{12} &amp; \dots  &amp; x_{1p} \\
+x_{21} &amp; x_{22} &amp; \dots  &amp; x_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n1} &amp; x_{n2} &amp; \dots  &amp; x_{np} 
+\end{matrix}
+\right)
+\]</span></p></li>
+<li><p>A row vector
+<span class="math display">\[
+x_i = \left(\begin{matrix} x_{i1} \\ x_{i2} \\ \vdots \\ x_{ip} \end{matrix} \right)
+\]</span></p></li>
+<li><p>A column vector
+<span class="math display">\[
+\textbf{x}_j = \left(\begin{matrix} x_{1j} \\ x_{2j} \\ \vdots \\ x_{nj} \end{matrix} \right)
+\]</span></p></li>
+<li><p>A matrix represented as a collection of column vectors
+<span class="math display">\[
+\textbf{X} =  \left( \textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_j \right)
+\]</span></p></li>
+<li><p>A transposed matrix. Rows become columns and columns become rows
+<span class="math display">\[
+\textbf{X}^{T} =  \left(
+\begin{matrix} 
+x_{11} &amp; x_{12} &amp; \dots  &amp; x_{1n} \\
+x_{21} &amp; x_{22} &amp; \dots  &amp; x_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{p1} &amp; x_{p2} &amp; \dots  &amp; x_{pn} 
+\end{matrix}
+\right)
+\]</span></p></li>
+<li><p>A transposed row vector. Again, vector elements are listed vertically by default, so this presentation shows the new orientation.
+<span class="math display">\[
+x_{i}^{T} =  \left( x_{i1}, x_{i2}, \dots, x_{ip} \right)
+\]</span></p></li>
+<li><p>A matrix represented as a collection of row vectors
+<span class="math display">\[
+\textbf{X} =  \left(
+\begin{matrix} 
+x_{1}^T \\
+x_{2}^T \\
+\vdots \\
+x_{n}^T
+\end{matrix}
+\right)
+\]</span></p></li>
+</ul>
 
 </div>
 </div>
@@ -192,6 +409,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
