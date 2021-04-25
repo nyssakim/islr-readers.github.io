@@ -1,0 +1,138 @@
+# Statistical Learning
+
+```{r include = FALSE}
+# Options
+knitr::opts_chunk$set(echo = FALSE)
+
+# Packages
+library(tidyverse)
+library(ISLR)
+
+# get Advertising data from ISLR Site
+if(!file.exists("data/Advertising.csv")){
+    download.file("https://www.statlearning.com/s/Advertising.csv", 
+                  destfile = "data/Advertising.csv")
+    Advertising <- read_csv("data/Advertising.csv") %>% select(-X1)
+} 
+Advertising <- read_csv("data/Advertising.csv") %>% select(-X1)
+
+if(!file.exists("data/Income1.csv")){
+    download.file("https://www.statlearning.com/s/Income1.csv", 
+                  destfile = "data/Income1.csv")
+    Income1 <- read_csv("data/Income1.csv") %>% select(-X1)
+} 
+Income1 <- read_csv("data/Income1.csv")
+```
+
+## 2.1 What Is Statistical Learning?
+
+Motivating example: \> Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
+
+```{r}
+glimpse(Advertising)
+```
+
+```{r}
+Advertising %>%
+    ggplot(mapping = aes(x = TV, y = sales)) +
+    geom_point(alpha = 0.25, point = 1) + 
+    theme_bw() +
+    geom_smooth(formula = y~x, method = "lm", se = FALSE)
+Advertising %>%
+    ggplot(mapping = aes(x = radio, y = sales)) +
+    geom_point(alpha = 0.25, point = 1) + 
+    theme_bw() +
+    geom_smooth(formula = y~x, method = "lm", se = FALSE)
+Advertising %>%
+    ggplot(mapping = aes(x = newspaper, y = sales)) +
+    geom_point(alpha = 0.25, point = 1) + 
+    theme_bw() +
+    geom_smooth(formula = y~x, method = "lm", se = FALSE)
+
+```
+
+**Input Variables**: These are the variables we knoW and can use to build our model. Also known as *predictors*, *independent variables*, or *features*. Denoted using the symbol $X_n$.
+
+**Output Variable**: This is the variable we are trying to predict with the model. Also known as a *response*, or *dependent variable*. Typically denoted as $Y$.
+
+More generally: $Y = f(X) + \epsilon$
+
+Where $Y$ is the quantitative response and $f$ is a function of $X_1, ..., X_p$ (of $p$ different predictors) and $\epsilon$ is some random **error term**.
+
+Assumptions:
+
+-   $f$ is **systematic** in its relationship to $Y$
+-   $\epsilon$ is independent of $X$
+-   $\epsilon$ has mean zero
+
+Another example:  Income and education may appear related, but the exact relationship is unknown. Note that some of the observations are above the linear interpolated line, while some are below it. The difference is $\epsilon$  
+
+```{r}
+Income1 %>%
+    ggplot(mapping = aes(x = Education, y = Income)) +
+    geom_point(point = 1, color = "red") + 
+        geom_smooth(formula = y~x, method = "lm", se = FALSE) +
+    theme_bw() 
+
+```
+
+## 2.1.1 Why Estimate f?
+
+## 2.1.2 How Do We Estimate f?
+
+## 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
+
+## 2.1.4 Supervised Versus Unsupervised Learning
+
+## 2.1.5 Regression Versus Classification Problems
+
+## 2.2 Assessing Model Accuracy
+
+## 2.2.1 Measuring the Quality of Fit
+
+## 2.2.2 The Bias-Variance Trade-Off
+
+## 2.2.3 The Classification Setting
+
+## 2.3 Lab: Introduction to R
+
+## 2.3.1 Basic Commands
+
+```{r}
+ x <- c(1,3,2,5)
+x
+```
+
+## 2.3.2 Graphics
+
+## 2.3.3 Indexing Data
+
+## 2.3.4 Loading Data
+
+## 2.3.5 Additional Graphical and Numerical Summaries
+
+## 2.4 Exercises
+
+## Conceptual
+
+1.  
+
+2.  
+
+3.  
+
+4.  
+
+5.  
+
+6.  
+
+7.  
+
+## Applied
+
+8.  
+
+9.  
+
+10. 
