@@ -78,6 +78,25 @@ Income1 %>%
 
 ## 2.1.1 Why Estimate f?
 
+There are two main reasons to estimate $f$:  
+-   Prediction
+-   Inference
+
+### Prediction
+
+Consider: $\hat{Y} = \hat{f}(X)$
+
+If $X$ is known, we can predict $\hat{Y}$ by this equation. 
+Don't be too concerned with the exact functional form of $\hat{f}$.
+
+#### Terms:
+-   **reducible error**: This is error that comes with the model. We can address this error by improving the accuracy of the model.
+-   **irreducicle error**: This is error introduced to the model, because $\epsilon$, by definition, cannot be explained by $X$  
+
+#### Ineference: 
+
+-   
+
 ## 2.1.2 How Do We Estimate f?
 
 ## 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
