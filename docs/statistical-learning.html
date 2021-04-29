@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Statistical Learning | ISLR Notes</title>
   <meta name="description" content="Chapter 2 Statistical Learning | ISLR Notes" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Statistical Learning | ISLR Notes" />
   <meta property="og:type" content="book" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -149,7 +153,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="statistical-learning.html"><a href="statistical-learning.html"><i class="fa fa-check"></i><b>2</b> Statistical Learning</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="statistical-learning.html"><a href="statistical-learning.html#what-is-statistical-learning"><i class="fa fa-check"></i><b>2.1</b> 2.1 What Is Statistical Learning?</a></li>
-<li class="chapter" data-level="2.2" data-path="statistical-learning.html"><a href="statistical-learning.html#why-estimate-f"><i class="fa fa-check"></i><b>2.2</b> 2.1.1 Why Estimate f?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-learning.html"><a href="statistical-learning.html#why-estimate-f"><i class="fa fa-check"></i><b>2.2</b> 2.1.1 Why Estimate f?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="statistical-learning.html"><a href="statistical-learning.html#prediction"><i class="fa fa-check"></i><b>2.2.1</b> Prediction</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="statistical-learning.html"><a href="statistical-learning.html#how-do-we-estimate-f"><i class="fa fa-check"></i><b>2.3</b> 2.1.2 How Do We Estimate f?</a></li>
 <li class="chapter" data-level="2.4" data-path="statistical-learning.html"><a href="statistical-learning.html#the-trade-off-between-prediction-accuracy-and-model-interpretability"><i class="fa fa-check"></i><b>2.4</b> 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability</a></li>
 <li class="chapter" data-level="2.5" data-path="statistical-learning.html"><a href="statistical-learning.html#supervised-versus-unsupervised-learning"><i class="fa fa-check"></i><b>2.5</b> 2.1.4 Supervised Versus Unsupervised Learning</a></li>
@@ -200,9 +207,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Statistical Learning</h1>
 <div id="what-is-statistical-learning" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> 2.1 What Is Statistical Learning?</h2>
+<p>Motivating example: &gt; Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. … our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.</p>
+<pre><code>## Rows: 200
+## Columns: 4
+## $ TV        &lt;dbl&gt; 230.1, 44.5, 17.2, 151.5, 180.8, 8.7, 57.5, 120.2, 8.6, 199.…
+## $ radio     &lt;dbl&gt; 37.8, 39.3, 45.9, 41.3, 10.8, 48.9, 32.8, 19.6, 2.1, 2.6, 5.…
+## $ newspaper &lt;dbl&gt; 69.2, 45.1, 69.3, 58.5, 58.4, 75.0, 23.5, 11.6, 1.0, 21.2, 2…
+## $ sales     &lt;dbl&gt; 22.1, 10.4, 9.3, 18.5, 12.9, 7.2, 11.8, 13.2, 4.8, 10.6, 8.6…</code></pre>
+<pre><code>## Warning: Ignoring unknown parameters: point</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre><code>## Warning: Ignoring unknown parameters: point</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<pre><code>## Warning: Ignoring unknown parameters: point</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<p><strong>Input Variables</strong>: These are the variables we knoW and can use to build our model. Also known as <em>predictors</em>, <em>independent variables</em>, or <em>features</em>. Denoted using the symbol <span class="math inline">\(X_n\)</span>.</p>
+<p><strong>Output Variable</strong>: This is the variable we are trying to predict with the model. Also known as a <em>response</em>, or <em>dependent variable</em>. Typically denoted as <span class="math inline">\(Y\)</span>.</p>
+<p>More generally: <span class="math inline">\(Y = f(X) + \epsilon\)</span></p>
+<p>Where <span class="math inline">\(Y\)</span> is the quantitative response and <span class="math inline">\(f\)</span> is a function of <span class="math inline">\(X_1, ..., X_p\)</span> (of <span class="math inline">\(p\)</span> different predictors) and <span class="math inline">\(\epsilon\)</span> is some random <strong>error term</strong>.</p>
+<p>Assumptions:</p>
+<ul>
+<li><span class="math inline">\(f\)</span> is <strong>systematic</strong> in its relationship to <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is independent of <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> has mean zero</li>
+</ul>
+<p>Another example: Income and education may appear related, but the exact relationship is unknown. Note that some of the observations are above the linear interpolated line, while some are below it. The difference is <span class="math inline">\(\epsilon\)</span></p>
+<pre><code>## Warning: Ignoring unknown parameters: point</code></pre>
+<p><img src="islr_notes_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="why-estimate-f" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> 2.1.1 Why Estimate f?</h2>
+<p>There are two main reasons to estimate <span class="math inline">\(f\)</span>:<br />
+- Prediction
+- Inference</p>
+<div id="prediction" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Prediction</h3>
+<p>Consider: <span class="math inline">\(\hat{Y} = \hat{f}(X)\)</span></p>
+<p>If <span class="math inline">\(X\)</span> is known, we can predict <span class="math inline">\(\hat{Y}\)</span> by this equation.
+Don’t be too concerned with the exact functional form of <span class="math inline">\(\hat{f}\)</span>.</p>
+<div id="terms" class="section level4" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Terms:</h4>
+<ul>
+<li><strong>reducible error</strong>: This is error that comes with the model. We can address this error by improving the accuracy of the model.</li>
+<li><strong>irreducicle error</strong>: This is error introduced to the model, because <span class="math inline">\(\epsilon\)</span>, by definition, cannot be explained by <span class="math inline">\(X\)</span></li>
+</ul>
+</div>
+<div id="ineference" class="section level4" number="2.2.1.2">
+<h4><span class="header-section-number">2.2.1.2</span> Ineference:</h4>
+<ul>
+<li></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="how-do-we-estimate-f" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> 2.1.2 How Do We Estimate f?</h2>
@@ -301,6 +356,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -320,7 +376,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["islr_notes.pdf"],
+"download": ["islr_notes.pdf", "islr_notes.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
