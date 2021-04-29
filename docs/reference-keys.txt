@@ -10,6 +10,9 @@ matrix-notation
 statistical-learning
 what-is-statistical-learning
 why-estimate-f
+prediction
+terms
+ineference
 how-do-we-estimate-f
 the-trade-off-between-prediction-accuracy-and-model-interpretability
 supervised-versus-unsupervised-learning
