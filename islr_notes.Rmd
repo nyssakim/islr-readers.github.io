@@ -1,3 +1,53 @@
+--- 
+title: "ISLR Notes"
+author: "TBD"
+date: "2021"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+link-citations: yes
+---
+--- 
+title: "ISLR Notes"
+author: "TBD"
+date: "2021"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+link-citations: yes
+---
+
+# About {-#about}
+
+Notes and solutions for the exercises in the book: *An Introduction to Statistical Learning with Applications in R (1st edition)* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani (website:  https://www.statlearning.com/)
+
+**License**
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+This work, as a whole, is licensed under a [Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) 
+
+<!--chapter:end:index.Rmd-->
+
+
+# Introduction {#intro}
+
+Placeholder
+
+
+## An Overview of Statistical Learning
+## Data sets
+### Wages
+### Stock Market Data
+### Gene Expression Data
+## History
+## Other Considerations
+## Matrix Notation
+
+<!--chapter:end:01-introduction.Rmd-->
+
 # Statistical Learning
 
 ```{r include = FALSE}
@@ -227,3 +277,44 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 9.  
 
 10. 
+
+<!--chapter:end:02-statistical-learning.Rmd-->
+
+# Linear Regression
+
+
+<!--chapter:end:03-linear-regression.Rmd-->
+
+# Classification 
+
+
+<!--chapter:end:04-classificiation.Rmd-->
+
+# Resampling Methods
+
+
+<!--chapter:end:05-resampling-methods.Rmd-->
+
+# Model Selection and Regularization
+
+
+<!--chapter:end:06-model-selection.Rmd-->
+
+# Moving Beyond Linearity
+
+<!--chapter:end:07-beyond-linearity.Rmd-->
+
+# Tree Based Methods
+
+<!--chapter:end:08-tree-based-methods.Rmd-->
+
+# Support Vector Machines
+
+
+<!--chapter:end:09-support-vector-machines.Rmd-->
+
+# Unsupervised Learning
+
+
+<!--chapter:end:10-unsupervised-learning.Rmd-->
+
