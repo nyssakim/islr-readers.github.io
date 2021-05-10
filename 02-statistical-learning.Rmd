@@ -36,17 +36,17 @@ glimpse(Advertising)
 ```{r}
 Advertising %>%
     ggplot(mapping = aes(x = TV, y = sales)) +
-    geom_point(alpha = 0.25, point = 1) + 
+    geom_point(alpha = 0.25, shape = 1) + 
     theme_bw() +
     geom_smooth(formula = y~x, method = "lm", se = FALSE)
 Advertising %>%
     ggplot(mapping = aes(x = radio, y = sales)) +
-    geom_point(alpha = 0.25, point = 1) + 
+    geom_point(alpha = 0.25, shape = 1) + 
     theme_bw() +
     geom_smooth(formula = y~x, method = "lm", se = FALSE)
 Advertising %>%
     ggplot(mapping = aes(x = newspaper, y = sales)) +
-    geom_point(alpha = 0.25, point = 1) + 
+    geom_point(alpha = 0.25, shape = 1) + 
     theme_bw() +
     geom_smooth(formula = y~x, method = "lm", se = FALSE)
 
@@ -71,7 +71,7 @@ Another example: Income and education may appear related, but the exact relation
 ```{r}
 Income1 %>%
     ggplot(mapping = aes(x = Education, y = Income)) +
-    geom_point(point = 1, color = "red") + 
+    geom_point(color = "red") + 
         geom_smooth(formula = y~x, method = "lm", se = FALSE) +
     theme_bw() 
 
@@ -173,7 +173,17 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 
 ```
 
+|Method   |Pro   |Con   |
+|---|---|---|
+|Linear Regression    |Easy to interpret   | Relatively inflexible   |
+|Thin Plate Splines   | Very flexible      |Difficult to understand  |
+|**lasso**   | More interpretable   | less flexible    |
+|GAMs   | more flexible   | less interpretable    |
+
 ## 2.1.4 Supervised Versus Unsupervised Learning
+
+ll
+
 
 ## 2.1.5 Regression Versus Classification Problems
 
