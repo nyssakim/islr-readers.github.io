@@ -3,10 +3,13 @@
 ```{r include = FALSE}
 # Options
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(error = TRUE)
 
 # Packages
 library(tidyverse)
 library(ISLR)
+library(readr)
+library(ggplot2)
 
 # get Advertising data from ISLR Site
 if(!file.exists("data/Advertising.csv")){
@@ -26,8 +29,7 @@ Income1 <- read_csv("data/Income1.csv")
 
 ## 2.1 What Is Statistical Learning?
 
-Motivating example: 
-> Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
+Motivating example: \> Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
 
 ```{r}
 glimpse(Advertising)
@@ -79,9 +81,7 @@ Income1 %>%
 
 ## 2.1.1 Why Estimate f?
 
-There are two main reasons to estimate $f$:
--   Prediction 
--   Inference  
+There are two main reasons to estimate $f$: - Prediction - Inference
 
 ### Prediction
 
@@ -101,54 +101,49 @@ $E(Y - Y^2) = E[f(X) + \epsilon - \hat{f}(X)]^2$
 
 $= [f(X) - \hat{f}(X)]^2 + Var(\epsilon)$
 
-Where $E(Y - Y^2)$ is the **expected value** of the squared difference between the predicted and actual value of $Y$, and $Var(X)$ is the **variance** associated with the error term $\epsilon$. 
+Where $E(Y - Y^2)$ is the **expected value** of the squared difference between the predicted and actual value of $Y$, and $Var(X)$ is the **variance** associated with the error term $\epsilon$.
 
 #### Inference:
 
-When used for inference, the aim is not to use estimate $f$ for predictions, but rather to understand how some response $Y$ is affected by the changes in $X_1, ..., X_p$. 
+When used for inference, the aim is not to use estimate $f$ for predictions, but rather to understand how some response $Y$ is affected by the changes in $X_1, ..., X_p$.
 
--   **Which predictors are associated with the response?**: Identifying the **important** predictors is the aim here.   
--   **What is the relationship between the response and each predictor?**: This can be positive, negative, or depend on the values of other predictors, depending on how complicated the model is.  
--   **Can the relationship between $Y$ and each predictor be summarized using a linear equation?**
+-   **Which predictors are associated with the response?**: Identifying the **important** predictors is the aim here.\
+-   **What is the relationship between the response and each predictor?**: This can be positive, negative, or depend on the values of other predictors, depending on how complicated the model is.\
+-   **Can the relationship between** $Y$ and each predictor be summarized using a linear equation?
 
-Examples:
--   **Prediction**: A Company using a model to identify target customers for a direct-marketing campaign. The company is not interested in the model, they just want a function form that will help them.
--   **Inference**: Modeling customer purchases of specific brands of products. The model is aimed toward explaining which components of the model affect probability of a purchase.
+Examples: - **Prediction**: A Company using a model to identify target customers for a direct-marketing campaign. The company is not interested in the model, they just want a function form that will help them. - **Inference**: Modeling customer purchases of specific brands of products. The model is aimed toward explaining which components of the model affect probability of a purchase.
 
-Functional form: In many cases, a **linear model** allows for a relatively interpretable form, but may not be as flexible or accurate as other models. 
+Functional form: In many cases, a **linear model** allows for a relatively interpretable form, but may not be as flexible or accurate as other models.
 
 ## 2.1.2 How Do We Estimate $f$?
 
-There are many different approaches to estimating $f$, which all share certain characteristics and terms. 
+There are many different approaches to estimating $f$, which all share certain characteristics and terms.
 
--   Training Data: This is the data used to train or teach our model how to estimate $\hat{f}$. In general, most estimation methods can be characterized as either **parametric** or **non-parametric**. 
+-   Training Data: This is the data used to train or teach our model how to estimate $\hat{f}$. In general, most estimation methods can be characterized as either **parametric** or **non-parametric**.
 
-### **Parametric Methods**: 
+### **Parametric Methods**:
 
-Involves a two-step model-base approach: 
+Involves a two-step model-base approach:
 
-1. Assume functional form. 
+1.  Assume functional form.
 
-Example: $f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$  (This is a *linear* model)
+Example: $f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$ (This is a *linear* model)
 
-2. After model selection, identify the procedure to estimate the parameters of the model. For linear models, this would be the method of estimating $\beta_0$, $\beta_1$, ... etc such that: 
+2.  After model selection, identify the procedure to estimate the parameters of the model. For linear models, this would be the method of estimating $\beta_0$, $\beta_1$, ... etc such that:
 
-$ Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$ 
+\$ Y \approx \beta\_0 + \beta\_1 X_1 + \beta\_2 X_2 + ... + \beta\_p X_p\$
 
-The most common approach with linear models is the **(Ordinary) least squares** method. The parametric method reduces estimation to determining a set of **parameters** that create the best fit for an assumed functional form. 
+The most common approach with linear models is the **(Ordinary) least squares** method. The parametric method reduces estimation to determining a set of **parameters** that create the best fit for an assumed functional form.
 
-Pros:  
--   Assuming the form makes estimation simpler!
+Pros:\
+- Assuming the form makes estimation simpler!
 
-Potential Cons:  
--   We don't know the true $f$, and we could be way off!
--   We can choose more flexible models to address this, but...
--   More flexible models lead to more parameters to estimate, and potentially **overfitting**.
+Potential Cons:\
+- We don't know the true $f$, and we could be way off! - We can choose more flexible models to address this, but... - More flexible models lead to more parameters to estimate, and potentially **overfitting**.
 
 ### **Non-parametric Methods**
 
-Pro: Do not make assumptions about functional form.
-Con: Require a large number of observations to obtain an estimate of $f$
+Pro: Do not make assumptions about functional form. Con: Require a large number of observations to obtain an estimate of $f$
 
 ## 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
 
@@ -173,19 +168,45 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 
 ```
 
-|Method   |Pro   |Con   |
-|---|---|---|
-|Linear Regression    |Easy to interpret   | Relatively inflexible   |
-|Thin Plate Splines   | Very flexible      |Difficult to understand  |
-|**lasso**   | More interpretable   | less flexible    |
-|GAMs   | more flexible   | less interpretable    |
+| Method             | Pro                | Con                     |
+|--------------------|--------------------|-------------------------|
+| Linear Regression  | Easy to interpret  | Relatively inflexible   |
+| Thin Plate Splines | Very flexible      | Difficult to understand |
+| **lasso**          | More interpretable | less flexible           |
+| GAMs               | more flexible      | less interpretable      |
 
 ## 2.1.4 Supervised Versus Unsupervised Learning
 
-ll
+> Most statistical learning problems fall into one of two categories: supervised or unsupervised.
 
+*Supervised Learning*: For each observation of the predictor measurements $X_i$, there is an associated response measurement $Y_i$. These are models where we want to predict **outcomes**.
+
+*Unsupervised Learning*: For each observation of the predictor measurements $X_i$, there is **No** associated response measurement $Y_i$(!) - In this scenario, it is not possible to fit a linear regression, since there is no associated $Y_i$.
+
+### Cluster Analysis
+
+One way to understand unsupervised models is through **cluster analysis**. The goal of this type of analysis is to determine whether $x_i, ..., x_n$ fall into relatively distinct groups.
+
+Note: - Clustering methods are imprecise -- They cannot assign all points to their correct group. - If there are $p$ variables, then $)p(p- 1) /2)$ scatterplots can be made, this is why automated clustering methods are important.\
+- There are instances where it is not clear whether a problem is *supervised* or *unsupervised* -- Some $Y$'s exist, but not all. These are referred to as *semi-supervised learning problems*.
+
+```{r}
+iris_cluster <- iris[, -5]
+cls <- kmeans(x = iris_cluster, centers = 3)
+iris_cluster$cluster <- as.character(cls$cluster)
+ggplot() +
+  geom_point(data = iris_cluster, 
+             mapping = aes(x = Sepal.Length, 
+                                  y = Petal.Length, 
+                                  colour = cluster))
+# borrowed from: https://rpubs.com/aephidayatuloh/clustervisual
+```
 
 ## 2.1.5 Regression Versus Classification Problems
+
+-   Problems with a *quantitative response value* (numeric) are referred to as *regression problems*. 
+-   Problems with a *qualitative response* -- a value in one of $K$ different classes, are referred to as *classification problems*. 
+    -   Qualitative responses are also referred to as *categorical values*.
 
 ## 2.2 Assessing Model Accuracy
 

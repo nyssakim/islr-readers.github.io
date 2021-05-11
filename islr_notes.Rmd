@@ -8,6 +8,16 @@ documentclass: book
 #biblio-style: apalike
 link-citations: yes
 ---
+--- 
+title: "ISLR Notes"
+author: "TBD"
+date: "2021"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+link-citations: yes
+---
 
 # About {-#about}
 
@@ -21,204 +31,20 @@ This work, as a whole, is licensed under a [Attribution-NonCommercial-ShareAlike
 
 <!--chapter:end:index.Rmd-->
 
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
 
 # Introduction {#intro}
 
-```{r include = FALSE}
-# Options
-knitr::opts_chunk$set(echo = FALSE)
+Placeholder
 
-# Packages
-library(tidyverse)
-library(ISLR)
-
-# Get raw data from the R package
-data(Wage, Smarket, NCI60, package = "ISLR")
-```
 
 ## An Overview of Statistical Learning
-
-> "Statistical learning refers to a vast set of tools for understanding
-> data."
-
--   Supervised: Using statistical models to **predict** or **estimate**
-    **outputs** based on **inputs**.
--   Unsupervised: Finding relationships between variables and structure
-    in the data
-
 ## Data sets
-
-Example data used in the book
-
--   Wages
--   Stock Market Data
--   Gene Expression Data
-
 ### Wages
-
-Used for regression problem examples such as predicting wage based on
-age and education
-
-```{r echo = TRUE}
-glimpse(Wage)
-```
-
-```{r }
-
-Wage %>%
-    ggplot(mapping = aes(x = age, y = wage)) +
-    geom_point(alpha = 0.25) +
-    geom_smooth(formula = y~x, method = "loess", se = FALSE)
-    
-Wage %>%
-    ggplot(mapping = aes(x = year, y = wage)) +
-    geom_point(alpha = 0.25) +
-    geom_smooth(formula = y~x, method = "loess", se = FALSE)
-    
-Wage %>%
-    ggplot(mapping = aes(x = education, y = wage, 
-                         fill = education)) +
-    geom_boxplot()
-```
-
 ### Stock Market Data
-
-Used for classification problem examples with categorical or qualitative
-output, such as predicting whether a stock index will either increase or
-decrease on any given day.
-
-Daily percentage change of S&P 500 stock index and 5 prior days
-
-```{r echo = TRUE}
-glimpse(Smarket)
-```
-
-```{r }
-Smarket %>%
-    select(Direction, Today, Lag1, Lag2, Lag3) %>%
-    pivot_longer(cols = c("Lag1", "Lag2", "Lag3"), names_to = "Lag", values_to = "Returns") %>%
-    mutate(
-        Lag = factor(Lag, levels = c("Lag1", "Lag2", "Lag3"), 
-                     labels = c("One Day", "Two Days", "Three Days"), 
-                     ordered = TRUE)
-    ) %>%
-    ggplot(mapping = aes(x = Direction, y = Returns, fill = Direction)) +
-    geom_boxplot() + 
-    scale_fill_manual(values = c("Down" = "steelblue2", "Up" = "sienna2")) +
-    facet_wrap(. ~ Lag) +
-    labs(y = "Percentage change in Stock Index",
-         x = "Today's Direction")
-```
-
 ### Gene Expression Data
-
-Used for examples of clustering problems such as identifying related
-groups of cancer cells based on observed characteristics.
-
-```{r echo = TRUE}
-str(NCI60)
-```
-
 ## History
-
-A brief timeline for the development of statistical learning
-
--   1800's *Linear Regression* (*Method of Least Squares*)
--   1936 *Linear Discriminant Analysis* developed to predict qualitative
-    values
--   1940s *Logistic Regression* developed to predict qualitative values
--   1970s *Generalized Linear Models* including both logistic and linear
-    regression
--   1980s *Classification and Regression Trees*
--   1986 *Generalized Additive Models*
--   Present day (2001) *Machine Learning*
-
 ## Other Considerations
-
-["How Eugenics Shaped Statistics: Exposing the damned lies of three
-science
-pioneers.](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
-
 ## Matrix Notation
-
-Conventions used in the book
-
--   $n$ number of observations in a sample
-
--   $p$ number of variables
-
--   $\textbf{X}$ an $n \times p$ matrix
-
-    -   where $x_{ij}$ represents the element in the $i$th row and the
-        $j$th column.
-    -   $x_i$ represents a single observation (row) as a vector with
-        length $p$. Note that vectors are written vertically by
-        convention in math notation.
-    -   $\textbf{x}_j$ represents a single variable (column) as a vector
-        with length $n$. Note that the bold face font is used to
-        distinguish columns ($\textbf{x}_3$) from rows ($x_3$).
-
--   The $^T$ superscript operator denotes the transpose of a matrix or
-    vector, where row and column indices are reversed such that the
-    resulting matrix or vector will have $p$ rows and/or $n$ columns.
-
-Examples
-
--   A matrix of elements $$
-    \textbf{X} =  \left(
-    \begin{matrix} 
-    x_{11} & x_{12} & \dots  & x_{1p} \\
-    x_{21} & x_{22} & \dots  & x_{2p} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    x_{n1} & x_{n2} & \dots  & x_{np} 
-    \end{matrix}
-    \right)
-    $$
-
--   A row vector $$
-    x_i = \left(\begin{matrix} x_{i1} \\ x_{i2} \\ \vdots \\ x_{ip} \end{matrix} \right)
-    $$
-
--   A column vector $$
-    \textbf{x}_j = \left(\begin{matrix} x_{1j} \\ x_{2j} \\ \vdots \\ x_{nj} \end{matrix} \right)
-    $$
-
--   A matrix represented as a collection of column vectors $$
-    \textbf{X} =  \left( \textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_j \right)
-    $$
-
--   A transposed matrix. Rows become columns and columns become rows $$
-    \textbf{X}^{T} =  \left(
-    \begin{matrix} 
-    x_{11} & x_{12} & \dots  & x_{1n} \\
-    x_{21} & x_{22} & \dots  & x_{2n} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    x_{p1} & x_{p2} & \dots  & x_{pn} 
-    \end{matrix}
-    \right)
-    $$
-
--   A transposed row vector. Again, vector elements are listed
-    vertically by default, so this presentation shows the new
-    orientation. $$
-    x_{i}^{T} =  \left( x_{i1}, x_{i2}, \dots, x_{ip} \right)
-    $$
-
--   A matrix represented as a collection of row vectors $$
-    \textbf{X} =  \left(
-    \begin{matrix} 
-    x_{1}^T \\
-    x_{2}^T \\
-    \vdots \\
-    x_{n}^T
-    \end{matrix}
-    \right)
-    $$
 
 <!--chapter:end:01-introduction.Rmd-->
 
@@ -227,10 +53,13 @@ Examples
 ```{r include = FALSE}
 # Options
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(error = TRUE)
 
 # Packages
 library(tidyverse)
 library(ISLR)
+library(readr)
+library(ggplot2)
 
 # get Advertising data from ISLR Site
 if(!file.exists("data/Advertising.csv")){
@@ -397,7 +226,17 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 
 ```
 
+|Method   |Pro   |Con   |
+|---|---|---|
+|Linear Regression    |Easy to interpret   | Relatively inflexible   |
+|Thin Plate Splines   | Very flexible      |Difficult to understand  |
+|**lasso**   | More interpretable   | less flexible    |
+|GAMs   | more flexible   | less interpretable    |
+
 ## 2.1.4 Supervised Versus Unsupervised Learning
+
+ll
+
 
 ## 2.1.5 Regression Versus Classification Problems
 
