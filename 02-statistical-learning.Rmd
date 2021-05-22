@@ -15,21 +15,20 @@ library(ggplot2)
 if(!file.exists("data/Advertising.csv")){
     download.file("https://www.statlearning.com/s/Advertising.csv", 
                   destfile = "data/Advertising.csv")
-    Advertising <- read_csv("data/Advertising.csv") %>% select(-X1)
 } 
 Advertising <- read_csv("data/Advertising.csv") %>% select(-X1)
 
 if(!file.exists("data/Income1.csv")){
     download.file("https://www.statlearning.com/s/Income1.csv", 
                   destfile = "data/Income1.csv")
-    Income1 <- read_csv("data/Income1.csv") %>% select(-X1)
 } 
-Income1 <- read_csv("data/Income1.csv")
+Income1 <- read_csv("data/Income1.csv") %>% select(-X1)
 ```
 
 ## 2.1 What Is Statistical Learning?
 
-Motivating example: \> Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
+Motivating example: 
+> Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
 
 ```{r}
 glimpse(Advertising)
@@ -131,7 +130,7 @@ Example: $f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$ (This 
 
 2.  After model selection, identify the procedure to estimate the parameters of the model. For linear models, this would be the method of estimating $\beta_0$, $\beta_1$, ... etc such that:
 
-\$ Y \approx \beta\_0 + \beta\_1 X_1 + \beta\_2 X_2 + ... + \beta\_p X_p\$
+-   $ Y \approx \beta\_0 + \beta\_1 X_1 + \beta\_2 X_2 + ... + \beta\_p X_p$
 
 The most common approach with linear models is the **(Ordinary) least squares** method. The parametric method reduces estimation to determining a set of **parameters** that create the best fit for an assumed functional form.
 
