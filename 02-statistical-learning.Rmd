@@ -1,3 +1,7 @@
+---
+---
+---
+
 # Statistical Learning
 
 ```{r include = FALSE}
@@ -11,7 +15,7 @@ library(ISLR)
 library(readr)
 library(ggplot2)
 
-# get Advertising data from ISLR Site
+# get Advertising and Income1 data from ISLR Site
 if(!file.exists("data/Advertising.csv")){
     download.file("https://www.statlearning.com/s/Advertising.csv", 
                   destfile = "data/Advertising.csv")
@@ -27,7 +31,8 @@ Income1 <- read_csv("data/Income1.csv") %>% select(-X1)
 
 ## 2.1 What Is Statistical Learning?
 
-Motivating example: 
+Motivating example:
+
 > Suppose that we are statistical consultants hired by a client to provide advice on how to improve sales of a particular product. ... our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
 
 ```{r}
@@ -53,7 +58,7 @@ Advertising %>%
 
 ```
 
-**Input Variables**: These are the variables we knoW and can use to build our model. Also known as *predictors*, *independent variables*, or *features*. Denoted using the symbol $X_n$.
+**Input Variables**: These are the variables we know and can use to build our model. Also known as *predictors*, *independent variables*, or *features*. Denoted using the symbol $X_n$.
 
 **Output Variable**: This is the variable we are trying to predict with the model. Also known as a *response*, or *dependent variable*. Typically denoted as $Y$.
 
@@ -78,11 +83,15 @@ Income1 %>%
 
 ```
 
-## 2.1.1 Why Estimate f?
+### 2.1.1 Why Estimate f?
 
-There are two main reasons to estimate $f$: - Prediction - Inference
+There are two main reasons to estimate $f$:
 
-### Prediction
+-   Prediction
+
+-   Inference
+
+#### Prediction
 
 Consider: $\hat{Y} = \hat{f}(X)$
 
@@ -110,17 +119,21 @@ When used for inference, the aim is not to use estimate $f$ for predictions, but
 -   **What is the relationship between the response and each predictor?**: This can be positive, negative, or depend on the values of other predictors, depending on how complicated the model is.\
 -   **Can the relationship between** $Y$ and each predictor be summarized using a linear equation?
 
-Examples: - **Prediction**: A Company using a model to identify target customers for a direct-marketing campaign. The company is not interested in the model, they just want a function form that will help them. - **Inference**: Modeling customer purchases of specific brands of products. The model is aimed toward explaining which components of the model affect probability of a purchase.
+Examples:
+
+**Prediction**: A Company using a model to identify target customers for a direct-marketing campaign. The company is not interested in the model, they just want a function form that will help them.
+
+**Inference**: Modeling customer purchases of specific brands of products. The model is aimed toward explaining which components of the model affect probability of a purchase.
 
 Functional form: In many cases, a **linear model** allows for a relatively interpretable form, but may not be as flexible or accurate as other models.
 
-## 2.1.2 How Do We Estimate $f$?
+### 2.1.2 How Do We Estimate $f$?
 
 There are many different approaches to estimating $f$, which all share certain characteristics and terms.
 
 -   Training Data: This is the data used to train or teach our model how to estimate $\hat{f}$. In general, most estimation methods can be characterized as either **parametric** or **non-parametric**.
 
-### **Parametric Methods**:
+#### **Parametric Methods**:
 
 Involves a two-step model-base approach:
 
@@ -130,21 +143,29 @@ Example: $f(X) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$ (This 
 
 2.  After model selection, identify the procedure to estimate the parameters of the model. For linear models, this would be the method of estimating $\beta_0$, $\beta_1$, ... etc such that:
 
--   $ Y \approx \beta\_0 + \beta\_1 X_1 + \beta\_2 X_2 + ... + \beta\_p X_p$
+$Y \approx \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p$
 
 The most common approach with linear models is the **(Ordinary) least squares** method. The parametric method reduces estimation to determining a set of **parameters** that create the best fit for an assumed functional form.
 
-Pros:\
-- Assuming the form makes estimation simpler!
+Pros:
 
-Potential Cons:\
-- We don't know the true $f$, and we could be way off! - We can choose more flexible models to address this, but... - More flexible models lead to more parameters to estimate, and potentially **overfitting**.
+-   Assuming the form makes estimation simpler!
 
-### **Non-parametric Methods**
+Potential Cons:
 
-Pro: Do not make assumptions about functional form. Con: Require a large number of observations to obtain an estimate of $f$
+-   We don't know the true $f$, and we could be way off!
 
-## 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
+-   We can choose more flexible models to address this, but...
+
+-   More flexible models lead to more parameters to estimate, and potentially **overfitting**.
+
+#### **Non-parametric Methods**
+
+Pro: Do not make assumptions about functional form.
+
+Con: Require a large number of observations to obtain an estimate of $f$
+
+### 2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability
 
 ```{r}
 plot(0:10,
@@ -174,7 +195,7 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 | **lasso**          | More interpretable | less flexible           |
 | GAMs               | more flexible      | less interpretable      |
 
-## 2.1.4 Supervised Versus Unsupervised Learning
+### 2.1.4 Supervised Versus Unsupervised Learning
 
 > Most statistical learning problems fall into one of two categories: supervised or unsupervised.
 
@@ -182,12 +203,17 @@ text(x=7.5, y=1.25, "Support Vector Machines", font=1)
 
 *Unsupervised Learning*: For each observation of the predictor measurements $X_i$, there is **No** associated response measurement $Y_i$(!) - In this scenario, it is not possible to fit a linear regression, since there is no associated $Y_i$.
 
-### Cluster Analysis
+#### Cluster Analysis
 
 One way to understand unsupervised models is through **cluster analysis**. The goal of this type of analysis is to determine whether $x_i, ..., x_n$ fall into relatively distinct groups.
 
-Note: - Clustering methods are imprecise -- They cannot assign all points to their correct group. - If there are $p$ variables, then $)p(p- 1) /2)$ scatterplots can be made, this is why automated clustering methods are important.\
-- There are instances where it is not clear whether a problem is *supervised* or *unsupervised* -- Some $Y$'s exist, but not all. These are referred to as *semi-supervised learning problems*.
+Note:
+
+-   Clustering methods are imprecise -- They cannot assign all points to their correct group.
+
+-   If there are $p$ variables, then $p(p- 1) /2)$ scatterplots can be made, this is why automated clustering methods are important.
+
+-   There are instances where it is not clear whether a problem is *supervised* or *unsupervised* -- Some $Y$'s exist, but not all. These are referred to as *semi-supervised learning problems*.
 
 ```{r}
 iris_cluster <- iris[, -5]
@@ -201,19 +227,69 @@ ggplot() +
 # borrowed from: https://rpubs.com/aephidayatuloh/clustervisual
 ```
 
-## 2.1.5 Regression Versus Classification Problems
+### 2.1.5 Regression Versus Classification Problems
 
--   Problems with a *quantitative response value* (numeric) are referred to as *regression problems*. 
--   Problems with a *qualitative response* -- a value in one of $K$ different classes, are referred to as *classification problems*. 
-    -   Qualitative responses are also referred to as *categorical values*.
+-   Problems with a *quantitative response value* (numeric) are referred to as *regression problems*.
+-   Problems with a *qualitative response* -- a value in one of $K$ different classes, are referred to as *classification problems*.
+-   Qualitative responses are also referred to as *categorical values*.
 
 ## 2.2 Assessing Model Accuracy
 
-## 2.2.1 Measuring the Quality of Fit
+> There is no free lunch in statistics: no one method dominates all others over all possible data sets. On a particular data set, one specific method may work best, but some other method may work better on a similar but different data set.
 
-## 2.2.2 The Bias-Variance Trade-Off
+### 2.2.1 Measuring the Quality of Fit
 
-## 2.2.3 The Classification Setting
+When using regressions, quality of fit is most commonly assessed by **mean squared error** (MSE):
+
+$MSE = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{f}(x_i))^2$
+
+$\hat{f}(x_i))^2$ is the prediction.
+
+The *training* MSE will be small if the predicted responses are close to the true responses, and larger if the estimates of the predictions are farther from the true responses.
+
+Examples:
+
+-   If we are interested in stock prices based on the previous 6 months, we really only care about how well the algorithm predicts *tomorrow's price*.
+
+-   If we train a model on diabetes patient's clinical measurements, we are only concerned with how well the model predicts *future* diabetes patients.
+
+Mechanically: If we fit our method on training observations ${(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$, we use those observations to fit $\hat{f}(x_1), \hat{f}(x_2), …, \hat{f}(x_n)$.
+
+The aim here is to compute an $\hat{f}(x_0)$ which is closest to the real *unseen* $y_0$ observation, the test data.
+
+#### How do we choose our model?  
+
+If we have test data available (not used for training/estimating $\hat{f}$), we can simply choose the method which minimizes $MSE$ on that test data. If we do not have testing data, we can choose the model which minimizes $MSE$ for our training data, but ***there is no guarantee that a method with the smallest training*** $MSE$ ***will result in the smallest test*** $MSE$***.***
+
+Note: As model flexibility increases, the training $MSE$ will decrease, but this does not imply that the *test* $MSE$ will similarly decrease. When a method yields a small training $MSE$ and a large test $MSE$, we are *overfitting* our data.
+
+### 2.2.2 The Bias-Variance Trade-Off
+
+It is possible to prove that the expected test MSE can be decomposed into the sum of three quantities: the v*ariance* of $\hat{f}(x_0)$, the squared *bias* of $\hat{f}(x_0)$, and the variance of the error terms $\epsilon$.
+
+$$
+E(y_0 - \hat{f}(x_0))^2 = Var(\hat{f}(x_0)) + [Bias(\hat{f}(x_0))]^2 + Var(\epsilon)
+$$
+
+To achieve a low expected test error, it is necessary to select a method that results in *low variance* and *low bias*. It's also important to understand that the MSE will never be lower than the $Var(\epsilon)$, the irreducible error.
+
+**Variance** refers to the amount $\hat{f}$ would change if we used different testing data. Generally, more flexible models have higher variance.
+
+**Bias** is the error introduced by using a simple model to approximate potentially complex functions. More flexible models generally have less bias.
+
+The Bias-Variance trade-off is the challenge of identifying a model which has both low variance **and** low bias.
+
+### 2.2.3 The Classification Setting
+
+In the classification context, many of the concepts above still apply, with minor differences because the $y_0$ is no longer a number value, but instead a qualitative value. The most common approach for gauging the accuracy of a qualitative $\hat{f}$ is the training *error rate:*
+
+$$
+\frac 1 n \sum_{i=1}^n I(y_i \neq \hat{y_i})
+$$
+
+Where $\hat{y_i}$ is the predicted value for the $i$th observation using the function $\hat{f}$,
+
+$I(y_i \neq \hat{y_i})$ is an *indicator variable*, equal to 1 if $y_i \neq \hat{y_i}$ and zero if not. This computes the fraction of incorrect classifications.
 
 ## 2.3 Lab: Introduction to R
 
